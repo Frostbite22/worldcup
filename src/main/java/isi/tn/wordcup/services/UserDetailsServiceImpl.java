@@ -7,12 +7,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import isi.tn.wordcup.entities.User;
-import isi.tn.wordcup.repositories.userRepository;
+import isi.tn.wordcup.repositories.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
-	userRepository userRepository;
+	UserRepository userRepository;
 
 	@Override
 	@Transactional

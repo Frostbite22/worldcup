@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import isi.tn.wordcup.repositories.userRepository;
+import isi.tn.wordcup.repositories.UserRepository;
 import isi.tn.wordcup.security.jwt.JwtUtils;
 import isi.tn.wordcup.services.UserDetailsImpl;
 import isi.tn.wordcup.entities.ERole;
@@ -29,21 +29,21 @@ import isi.tn.wordcup.payload.request.LoginRequest;
 import isi.tn.wordcup.payload.request.SignupRequest;
 import isi.tn.wordcup.payload.response.JwtResponse;
 import isi.tn.wordcup.payload.response.MessageResponse;
-import isi.tn.wordcup.repositories.roleRepository;
+import isi.tn.wordcup.repositories.RoleRepository;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 public class authController {
 	@Autowired
 	AuthenticationManager authenticationManager;
 
 	@Autowired
-	userRepository userRepository;
+	UserRepository userRepository;
 
 	@Autowired
-	roleRepository roleRepository;
+	RoleRepository roleRepository;
 
 	@Autowired
 	PasswordEncoder encoder;
@@ -78,13 +78,13 @@ public class authController {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
 			return ResponseEntity
 					.badRequest()
-					.body(new MessageResponse("Error: Username is already taken!"));
+                    .body(new MessageResponse(false,"Failed","Error: Username is already taken!"));
 		}
 
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
 			return ResponseEntity
 					.badRequest()
-					.body(new MessageResponse("Error: Email is already in use!"));
+                    .body(new MessageResponse(false,"Failed","Error: Email is already taken!"));
 		}
 
 		// Create new user's account
@@ -124,7 +124,6 @@ public class authController {
 
 		user.setRoles(roles);
 		userRepository.save(user);
-
-		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+        return ResponseEntity.ok(new MessageResponse(true,"Succés","User registered successfully!"));
 	}
 }
