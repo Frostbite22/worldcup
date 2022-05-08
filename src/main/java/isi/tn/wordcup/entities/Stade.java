@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
@@ -30,6 +29,7 @@ public class Stade {
 	@NotBlank
 	@Size(max = 50)
 	private String localisation;
+	private String image;
 	@OneToMany(mappedBy="stade")
 	@JsonProperty(access= JsonProperty.Access.WRITE_ONLY)
 	private Collection<Match> matchs;
@@ -38,13 +38,16 @@ public class Stade {
 	}
 
 	public Stade(Long id, @NotBlank @Size(max = 50) String nom, @NotBlank @Size(max = 50) String localisation,
-			Collection<Match> matchs) {
+			String image, Collection<Match> matchs) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.localisation = localisation;
+		this.image = image;
 		this.matchs = matchs;
 	}
+
+
 
 	public Long getId() {
 		return id;
@@ -78,5 +81,12 @@ public class Stade {
 		this.matchs = matchs;
 	}
 
-	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 }

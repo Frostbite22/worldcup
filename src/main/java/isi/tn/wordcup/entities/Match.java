@@ -23,17 +23,17 @@ public class Match {
 	private Long id;
 	@NotBlank
 	@Size(max = 50)
-	private String nomEquipe1;
+	@ManyToOne
+	private Equipe nomEquipe1;
 	@NotBlank
 	@Size(max = 50)
-	private String nomEquipe2;
+	@ManyToOne
+	private Equipe nomEquipe2;
 	@Size(max=10)
 	private String resultat;
 	private Date date;
 	@ManyToOne
-	private Equipe equipe;
-	@ManyToOne
-	private Tournoir tournoir;
+	private Tournoi tournoi;
 	@ManyToOne
 	private Stade stade;
 	@OneToMany(mappedBy="match")
@@ -43,17 +43,15 @@ public class Match {
 	public Match() {
 	}
 
-	public Match(Long id, @NotBlank @Size(max = 50) String nomEquipe1, @NotBlank @Size(max = 50) String nomEquipe2,
-			@Size(max = 10) String resultat, Date date, Equipe equipe, Tournoir tournoir, Stade stade,
-			Collection<Arbitre> arbitres) {
+	public Match(Long id, @NotBlank @Size(max = 50) Equipe nomEquipe1, @NotBlank @Size(max = 50) Equipe nomEquipe2,
+			@Size(max = 10) String resultat, Date date, Tournoi tournoi, Stade stade, Collection<Arbitre> arbitres) {
 		super();
 		this.id = id;
 		this.nomEquipe1 = nomEquipe1;
 		this.nomEquipe2 = nomEquipe2;
 		this.resultat = resultat;
 		this.date = date;
-		this.equipe = equipe;
-		this.tournoir = tournoir;
+		this.tournoi = tournoi;
 		this.stade = stade;
 		this.arbitres = arbitres;
 	}
@@ -66,19 +64,19 @@ public class Match {
 		this.id = id;
 	}
 
-	public String getNomEquipe1() {
+	public Equipe getNomEquipe1() {
 		return nomEquipe1;
 	}
 
-	public void setNomEquipe1(String nomEquipe1) {
+	public void setNomEquipe1(Equipe nomEquipe1) {
 		this.nomEquipe1 = nomEquipe1;
 	}
 
-	public String getNomEquipe2() {
+	public Equipe getNomEquipe2() {
 		return nomEquipe2;
 	}
 
-	public void setNomEquipe2(String nomEquipe2) {
+	public void setNomEquipe2(Equipe nomEquipe2) {
 		this.nomEquipe2 = nomEquipe2;
 	}
 
@@ -98,20 +96,12 @@ public class Match {
 		this.date = date;
 	}
 
-	public Equipe getEquipe() {
-		return equipe;
+	public Tournoi getTournoir() {
+		return tournoi;
 	}
 
-	public void setEquipe(Equipe equipe) {
-		this.equipe = equipe;
-	}
-
-	public Tournoir getTournoir() {
-		return tournoir;
-	}
-
-	public void setTournoir(Tournoir tournoir) {
-		this.tournoir = tournoir;
+	public void setTournoir(Tournoi tournoi) {
+		this.tournoi = tournoi;
 	}
 
 	public Stade getStade() {
@@ -129,6 +119,5 @@ public class Match {
 	public void setArbitres(Collection<Arbitre> arbitres) {
 		this.arbitres = arbitres;
 	}
-
 	
 }

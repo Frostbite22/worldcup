@@ -6,18 +6,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
-@Table(name = "tournoirs")
-public class Tournoir {
+@Table(name = "tournois")
+public class Tournoi {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -26,23 +24,20 @@ public class Tournoir {
 	private String nom;
 	private Date dateDebut;
 	private Date dateFin;
-	@ManyToOne
-	private Equipe equipe;
-	@OneToMany(mappedBy="tournoir")
+	@OneToMany(mappedBy="tournoi")
 	@JsonProperty(access= JsonProperty.Access.WRITE_ONLY)
 	private Collection<Match> matchs;
 	
-	public Tournoir() {
+	public Tournoi() {
 	}
 
-	public Tournoir(Long id, @NotBlank @Size(max = 50) String nom, Date dateDebut, Date dateFin, Equipe equipe,
+	public Tournoi(Long id, @NotBlank @Size(max = 50) String nom, Date dateDebut, Date dateFin,
 			Collection<Match> matchs) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
-		this.equipe = equipe;
 		this.matchs = matchs;
 	}
 
@@ -76,14 +71,6 @@ public class Tournoir {
 
 	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
-	}
-
-	public Equipe getEquipe() {
-		return equipe;
-	}
-
-	public void setEquipe(Equipe equipe) {
-		this.equipe = equipe;
 	}
 
 	public Collection<Match> getMatchs() {

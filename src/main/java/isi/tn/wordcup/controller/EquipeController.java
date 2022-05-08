@@ -14,12 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import isi.tn.wordcup.entities.Arbitre;
 import isi.tn.wordcup.entities.Equipe;
 import isi.tn.wordcup.payload.response.MessageResponse;
 import isi.tn.wordcup.services.IEquipeService;
-import isi.tn.wordcup.services.ImpArbitreService;
-import isi.tn.wordcup.services.ImpEquipeService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

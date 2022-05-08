@@ -29,8 +29,7 @@ public class Jouer {
 	private String prenom;
 	private int age;
 	private double taille;
-	private String filiere;
-	private int niveau;
+	private String poids;
 	private String poste;
 	private int numMaillot;
 	@ManyToOne
@@ -40,15 +39,14 @@ public class Jouer {
 	}
 
 	public Jouer(Long id, @NotBlank @Size(max = 50) String nom, @NotBlank @Size(max = 50) String prenom, int age,
-			double taille, String filiere, int niveau, String poste, int numMaillot, Equipe equipe) {
+			double taille, String poids, String poste, int numMaillot, Equipe equipe) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.age = age;
 		this.taille = taille;
-		this.filiere = filiere;
-		this.niveau = niveau;
+		this.poids = poids;
 		this.poste = poste;
 		this.numMaillot = numMaillot;
 		this.equipe = equipe;
@@ -94,20 +92,12 @@ public class Jouer {
 		this.taille = taille;
 	}
 
-	public String getFiliere() {
-		return filiere;
+	public String getPoids() {
+		return poids;
 	}
 
-	public void setFiliere(String filiere) {
-		this.filiere = filiere;
-	}
-
-	public int getNiveau() {
-		return niveau;
-	}
-
-	public void setNiveau(int niveau) {
-		this.niveau = niveau;
+	public void setPoids(String poids) {
+		this.poids = poids;
 	}
 
 	public String getPoste() {

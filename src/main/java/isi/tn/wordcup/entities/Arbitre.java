@@ -1,7 +1,5 @@
 package isi.tn.wordcup.entities;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,22 +21,18 @@ public class Arbitre {
 	@NotBlank
 	@Size(max = 50)
 	private String prenom;
-	private String filiere;
-	private String niveau;
 	@ManyToOne
 	private Match match;
 	
 	public Arbitre() {
 	}
 
-	public Arbitre(Long id, @NotBlank @Size(max = 50) String nom, @NotBlank @Size(max = 50) String prenom,
-			String filiere, String niveau, Match match) {
+	public Arbitre(Long id, @NotBlank @Size(max = 50) String nom, @NotBlank @Size(max = 50) String prenom
+			, Match match) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.filiere = filiere;
-		this.niveau = niveau;
 		this.match = match;
 	}
 
@@ -66,22 +60,6 @@ public class Arbitre {
 		this.prenom = prenom;
 	}
 
-	public String getFiliere() {
-		return filiere;
-	}
-
-	public void setFiliere(String filiere) {
-		this.filiere = filiere;
-	}
-
-	public String getNiveau() {
-		return niveau;
-	}
-
-	public void setNiveau(String niveau) {
-		this.niveau = niveau;
-	}
-
 	public Match getMatch() {
 		return match;
 	}
@@ -89,6 +67,5 @@ public class Arbitre {
 	public void setMatch(Match match) {
 		this.match = match;
 	}
-	
 	
 }

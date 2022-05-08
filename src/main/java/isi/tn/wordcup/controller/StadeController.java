@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import isi.tn.wordcup.entities.Stade;
 import isi.tn.wordcup.payload.response.MessageResponse;
 import isi.tn.wordcup.services.IStadeService;
-import isi.tn.wordcup.services.ImpStadeService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

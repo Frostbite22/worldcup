@@ -5,13 +5,12 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import isi.tn.wordcup.entities.Stade;
-import isi.tn.wordcup.entities.Tournoir;
+import isi.tn.wordcup.entities.Tournoi;
 
 @Repository
-public interface TournoirRepository extends JpaRepository<Tournoir, Long>{
+public interface TournoiRepository extends JpaRepository<Tournoi, Long>{
 
-	Optional<Tournoir> findByNom(String nom);
+	Optional<Tournoi> findByNom(String nom);
 
 	Boolean existsByNom(String nom);
 }

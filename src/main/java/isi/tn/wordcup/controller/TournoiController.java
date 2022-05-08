@@ -14,47 +14,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import isi.tn.wordcup.entities.Equipe;
-import isi.tn.wordcup.entities.Tournoir;
+import isi.tn.wordcup.entities.Tournoi;
 import isi.tn.wordcup.payload.response.MessageResponse;
-import isi.tn.wordcup.services.ITournoirService;
-import isi.tn.wordcup.services.ImpEquipeService;
-import isi.tn.wordcup.services.ImpTournoirService;
+import isi.tn.wordcup.services.ITournoiService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/tournoir")
+@RequestMapping("/tournoi")
 @PreAuthorize("hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
-public class TournoirController {
+public class TournoiController {
 	@Autowired
-    private ITournoirService tournoirService;
+    private ITournoiService tournoiService;
 
     @GetMapping
     @PreAuthorize("hasRole('ROLE_USER')")
-    public List<Tournoir> findAll() {
-        return tournoirService.findAll();
+    public List<Tournoi> findAll() {
+        return tournoiService.findAll();
     }
 
     @PostMapping
    	@PreAuthorize("hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
-    public MessageResponse save(@RequestBody Tournoir tournoir) {
-        return tournoirService.save(tournoir);
+    public MessageResponse save(@RequestBody Tournoi tournoi) {
+        return tournoiService.save(tournoi);
     }
 
     @PutMapping
-    public MessageResponse update(@RequestBody Tournoir tournoir) {
-        return tournoirService.update(tournoir);
+    public MessageResponse update(@RequestBody Tournoi tournoi) {
+        return tournoiService.update(tournoi);
     }
 
     @GetMapping("/{code}")
     @PreAuthorize("hasRole('ROLE_USER')")
-    public Tournoir findById(@PathVariable("code") Long id) {
-        return tournoirService.findById(id);
+    public Tournoi findById(@PathVariable("code") Long id) {
+        return tournoiService.findById(id);
     }
 
     @DeleteMapping("/{id}")
    	@PreAuthorize("hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
     public MessageResponse delete(@PathVariable Long id) {
-        return tournoirService.delete(id);
+        return tournoiService.delete(id);
     }
 }

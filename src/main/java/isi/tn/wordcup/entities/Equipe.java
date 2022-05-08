@@ -10,7 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -27,34 +26,35 @@ public class Equipe {
 	@NotBlank
 	@Size(max = 50)
 	private String nom;
+	private String drapeau;
 	@ManyToOne
 	private Groupe groupe;
 	@OneToMany(mappedBy="equipe")
 	@JsonProperty(access= JsonProperty.Access.WRITE_ONLY)
 	private Collection<Jouer> jouers;
-	@OneToMany(mappedBy="equipe")
+	@OneToMany(mappedBy="nomEquipe1")
 	@JsonProperty(access= JsonProperty.Access.WRITE_ONLY)
-	private Collection<Tournoir> tournoirs;
-	@OneToMany(mappedBy="equipe")
+	private Collection<Match> matchs1;
+
+	@OneToMany(mappedBy="nomEquipe2")
 	@JsonProperty(access= JsonProperty.Access.WRITE_ONLY)
-	private Collection<Match> matchs;
-	
+	private Collection<Match> matchs2;
 	
 	public Equipe() {
 	}
 
-
-	public Equipe(Long id, @NotBlank @Size(max = 50) String nom, Groupe groupe, Collection<Jouer> jouers,
-			Collection<Tournoir> tournoirs, Collection<Match> matchs) {
+	public Equipe(Long id, @NotBlank @Size(max = 50) String nom, String drapeau, Groupe groupe,
+			Collection<Jouer> jouers, Collection<Match> matchs1,
+			Collection<Match> matchs2) {
 		super();
 		this.id = id;
 		this.nom = nom;
+		this.drapeau = drapeau;
 		this.groupe = groupe;
 		this.jouers = jouers;
-		this.tournoirs = tournoirs;
-		this.matchs = matchs;
+		this.matchs1 = matchs1;
+		this.matchs2 = matchs2;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -95,26 +95,33 @@ public class Equipe {
 		this.jouers = jouers;
 	}
 
-
-	public Collection<Tournoir> getTournoirs() {
-		return tournoirs;
+	public Collection<Match> getMatchs1() {
+		return matchs1;
 	}
 
 
-	public void setTournoirs(Collection<Tournoir> tournoirs) {
-		this.tournoirs = tournoirs;
+	public String getDrapeau() {
+		return drapeau;
 	}
 
 
-	public Collection<Match> getMatchs() {
-		return matchs;
+	public void setDrapeau(String drapeau) {
+		this.drapeau = drapeau;
 	}
 
 
-	public void setMatchs(Collection<Match> matchs) {
-		this.matchs = matchs;
+	public void setMatchs1(Collection<Match> matchs1) {
+		this.matchs1 = matchs1;
 	}
 
-	
+
+	public Collection<Match> getMatchs2() {
+		return matchs2;
+	}
+
+
+	public void setMatchs2(Collection<Match> matchs2) {
+		this.matchs2 = matchs2;
+	}
 	
 }

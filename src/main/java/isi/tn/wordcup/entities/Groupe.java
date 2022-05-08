@@ -8,10 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
@@ -21,13 +18,21 @@ public class Groupe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank
-	private int numero;
+	private String nom;
 	@OneToMany(mappedBy="groupe")
 	@JsonProperty(access= JsonProperty.Access.WRITE_ONLY)
 	private Collection<Equipe> equipes;
 	
 	
 	public Groupe() {
+	}
+
+
+	public Groupe(Long id, @NotBlank String nom, Collection<Equipe> equipes) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.equipes = equipes;
 	}
 
 
@@ -41,13 +46,13 @@ public class Groupe {
 	}
 
 
-	public int getNumero() {
-		return numero;
+	public String getNom() {
+		return nom;
 	}
 
 
-	public void setNumero(int numero) {
-		this.numero = numero;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 
