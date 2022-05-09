@@ -6,60 +6,60 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import isi.tn.wordcup.entities.Jouer;
+import isi.tn.wordcup.entities.Joueur;
 import isi.tn.wordcup.payload.response.MessageResponse;
-import isi.tn.wordcup.repositories.JouerRepository;
+import isi.tn.wordcup.repositories.JoueurRepository;
 
 @Service
-public class ImpJouerService implements IJouerService{
+public class ImpJoueurService implements IJoueurService{
 	@Autowired
-	JouerRepository jouerRepository;
+	JoueurRepository joueurRepository;
 
     @Transactional
 	@Override
-	public MessageResponse save(Jouer jouer) {
-        boolean existe = jouerRepository.existsByNom(jouer.getNom());
+	public MessageResponse save(Joueur joueur) {
+        boolean existe = joueurRepository.existsByNom(joueur.getNom());
         if (existe){
             return new MessageResponse(false,"Echec !","Cette jouer existe déja !");
         }
-        jouerRepository.save(jouer);
+        joueurRepository.save(joueur);
         return new MessageResponse(true,"Succès","Opération réalisée avec succès.");
 	}
 
     @Transactional
 	@Override
-	public MessageResponse update(Jouer jouer) {
-        boolean existe = jouerRepository.existsById(jouer.getId());
+	public MessageResponse update(Joueur joueur) {
+        boolean existe = joueurRepository.existsById(joueur.getId());
         if (!existe){
-            boolean existe1 = jouerRepository.existsByNom(jouer.getNom());
-            return new MessageResponse(false,"Echec !","Cette jouer existe déja !");
+            boolean existe1 = joueurRepository.existsByNom(joueur.getNom());
+            return new MessageResponse(false,"Echec !","Cette joueur existe déja !");
         }
-        jouerRepository.save(jouer);
+        joueurRepository.save(joueur);
         return new MessageResponse(true,"Succès","Opération réalisée avec succès.");
 	}
 
     @Transactional
 	@Override
 	public MessageResponse delete(Long id) {
-        Jouer jouer = findById(id);
-        if (jouer==null){
+        Joueur joueur = findById(id);
+        if (joueur==null){
             return new MessageResponse(false,"Echec","Cet enregistrement n'existe pas !");
         }
-        jouerRepository.delete(jouer);
+        joueurRepository.delete(joueur);
         return new MessageResponse(true,"Succès", "L'enregistrement à été supprimé avec succès.");
 	}
 
     @Transactional
 	@Override
-	public List<Jouer> findAll() {
-        return jouerRepository.findAll();
+	public List<Joueur> findAll() {
+        return joueurRepository.findAll();
 	}
 
     @Transactional
 	@Override
-	public Jouer findById(Long id) {
-        Jouer domaine = jouerRepository.findById(id).orElse(null);
-        return domaine;
+	public Joueur findById(Long id) {
+        Joueur joueur = joueurRepository.findById(id).orElse(null);
+        return joueur;
 	}
 
 }

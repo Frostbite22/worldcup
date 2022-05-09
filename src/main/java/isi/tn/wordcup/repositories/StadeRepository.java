@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import isi.tn.wordcup.entities.Jouer;
+import isi.tn.wordcup.entities.Joueur;
 import isi.tn.wordcup.entities.Stade;
 
 @Repository

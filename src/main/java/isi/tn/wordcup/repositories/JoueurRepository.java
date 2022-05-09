@@ -6,12 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import isi.tn.wordcup.entities.Equipe;
-import isi.tn.wordcup.entities.Jouer;
+import isi.tn.wordcup.entities.Joueur;
 
 @Repository
-public interface JouerRepository extends JpaRepository<Jouer, Long>{
+public interface JoueurRepository extends JpaRepository<Joueur, Long>{
 
-	Optional<Jouer> findByNom(String nom);
+	Optional<Joueur> findByNom(String nom);
 
 	Boolean existsByNom(String nom);
 }

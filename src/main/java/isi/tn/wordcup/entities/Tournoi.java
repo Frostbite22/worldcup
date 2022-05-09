@@ -31,7 +31,7 @@ public class Tournoi {
 	public Tournoi() {
 	}
 
-	public Tournoi(Long id, @NotBlank @Size(max = 50) String nom, Date dateDebut, Date dateFin,
+	public Tournoi(Long id, String nom, Date dateDebut, Date dateFin,
 			Collection<Match> matchs) {
 		super();
 		this.id = id;

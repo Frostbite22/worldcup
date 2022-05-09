@@ -31,7 +31,7 @@ public class Equipe {
 	private Groupe groupe;
 	@OneToMany(mappedBy="equipe")
 	@JsonProperty(access= JsonProperty.Access.WRITE_ONLY)
-	private Collection<Jouer> jouers;
+	private Collection<Joueur> joueurs;
 	@OneToMany(mappedBy="nomEquipe1")
 	@JsonProperty(access= JsonProperty.Access.WRITE_ONLY)
 	private Collection<Match> matchs1;
@@ -44,14 +44,14 @@ public class Equipe {
 	}
 
 	public Equipe(Long id, @NotBlank @Size(max = 50) String nom, String drapeau, Groupe groupe,
-			Collection<Jouer> jouers, Collection<Match> matchs1,
+			Collection<Joueur> joueurs, Collection<Match> matchs1,
 			Collection<Match> matchs2) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.drapeau = drapeau;
 		this.groupe = groupe;
-		this.jouers = jouers;
+		this.joueurs = joueurs;
 		this.matchs1 = matchs1;
 		this.matchs2 = matchs2;
 	}
@@ -86,13 +86,13 @@ public class Equipe {
 	}
 
 
-	public Collection<Jouer> getJouers() {
-		return jouers;
+	public Collection<Joueur> getJoueurs() {
+		return joueurs;
 	}
 
 
-	public void setJouers(Collection<Jouer> jouers) {
-		this.jouers = jouers;
+	public void setJoueurs(Collection<Joueur> joueurs) {
+		this.joueurs = joueurs;
 	}
 
 	public Collection<Match> getMatchs1() {

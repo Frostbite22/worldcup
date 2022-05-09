@@ -43,8 +43,8 @@ public class Match {
 	public Match() {
 	}
 
-	public Match(Long id, @NotBlank @Size(max = 50) Equipe nomEquipe1, @NotBlank @Size(max = 50) Equipe nomEquipe2,
-			@Size(max = 10) String resultat, Date date, Tournoi tournoi, Stade stade, Collection<Arbitre> arbitres) {
+	public Match(Long id, Equipe nomEquipe1, Equipe nomEquipe2,
+			String resultat, Date date, Tournoi tournoi, Stade stade, Collection<Arbitre> arbitres) {
 		super();
 		this.id = id;
 		this.nomEquipe1 = nomEquipe1;
@@ -96,11 +96,11 @@ public class Match {
 		this.date = date;
 	}
 
-	public Tournoi getTournoir() {
+	public Tournoi getTournoi() {
 		return tournoi;
 	}
 
-	public void setTournoir(Tournoi tournoi) {
+	public void setTournoi(Tournoi tournoi) {
 		this.tournoi = tournoi;
 	}
 

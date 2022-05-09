@@ -11,12 +11,12 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "jouers", 
+@Table(name = "joueurs", 
 uniqueConstraints = { 
 		@UniqueConstraint(columnNames = "nom"),
 		@UniqueConstraint(columnNames = "prenom") 
 	})
-public class Jouer {
+public class Joueur {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,10 +35,10 @@ public class Jouer {
 	@ManyToOne
 	private Equipe equipe;
 	
-	public Jouer() {
+	public Joueur() {
 	}
 
-	public Jouer(Long id, @NotBlank @Size(max = 50) String nom, @NotBlank @Size(max = 50) String prenom, int age,
+	public Joueur(Long id, @NotBlank @Size(max = 50) String nom, @NotBlank @Size(max = 50) String prenom, int age,
 			double taille, String poids, String poste, int numMaillot, Equipe equipe) {
 		super();
 		this.id = id;

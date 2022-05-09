@@ -14,45 +14,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import isi.tn.wordcup.entities.Jouer;
+import isi.tn.wordcup.entities.Joueur;
 import isi.tn.wordcup.payload.response.MessageResponse;
-import isi.tn.wordcup.services.IJouerService;
+import isi.tn.wordcup.services.IJoueurService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/jouer")
+@RequestMapping("/joueur")
 @PreAuthorize("hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
-public class JouerController {
+public class JoueurController {
 	@Autowired
-    private IJouerService jouerService;
+    private IJoueurService joueurService;
 
     @GetMapping
     @PreAuthorize("hasRole('ROLE_USER')")
-    public List<Jouer> findAll() {
-        return jouerService.findAll();
+    public List<Joueur> findAll() {
+        return joueurService.findAll();
     }
 
     @PostMapping
    	@PreAuthorize("hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
-    public MessageResponse save(@RequestBody Jouer jouer) {
-        return jouerService.save(jouer);
+    public MessageResponse save(@RequestBody Joueur joueur) {
+        return joueurService.save(joueur);
     }
 
     @PutMapping
    	@PreAuthorize("hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
-    public MessageResponse update(@RequestBody Jouer jouer) {
-        return jouerService.update(jouer);
+    public MessageResponse update(@RequestBody Joueur joueur) {
+        return joueurService.update(joueur);
     }
 
     @GetMapping("/{code}")
     @PreAuthorize("hasRole('ROLE_USER')")
-    public Jouer findById(@PathVariable("code") Long id) {
-        return jouerService.findById(id);
+    public Joueur findById(@PathVariable("code") Long id) {
+        return joueurService.findById(id);
     }
 
     @DeleteMapping("/{id}")
    	@PreAuthorize("hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
     public MessageResponse delete(@PathVariable Long id) {
-        return jouerService.delete(id);
+        return joueurService.delete(id);
     }
 }
