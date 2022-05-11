@@ -46,7 +46,7 @@ public class RoleController {
         return roleService.update(role);
     }
 
-    @GetMapping("/{code}")
+    @GetMapping("/{id}")
     @PreAuthorize("hasRole('ROLE_USER')")
     public Role findById(@PathVariable("id") Long id) {
         return roleService.findById(id);
