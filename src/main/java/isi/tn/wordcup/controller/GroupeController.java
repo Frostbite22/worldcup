@@ -21,7 +21,6 @@ import isi.tn.wordcup.services.IGroupeService;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/groupe")
-@PreAuthorize("hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
 public class GroupeController {
 	@Autowired
     private IGroupeService groupeService;

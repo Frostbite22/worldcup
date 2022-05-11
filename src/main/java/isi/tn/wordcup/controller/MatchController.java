@@ -21,7 +21,6 @@ import isi.tn.wordcup.services.IMatchService;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/match")
-@PreAuthorize("hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
 public class MatchController {
 	@Autowired
     private IMatchService matchService;

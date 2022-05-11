@@ -21,7 +21,6 @@ import isi.tn.wordcup.services.IJoueurService;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/joueur")
-@PreAuthorize("hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
 public class JoueurController {
 	@Autowired
     private IJoueurService joueurService;

@@ -21,7 +21,6 @@ import isi.tn.wordcup.services.IStadeService;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/stade")
-@PreAuthorize("hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
 public class StadeController {
 	@Autowired
     private IStadeService stadeService;
